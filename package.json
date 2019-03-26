@@ -1,0 +1,26 @@
+{
+  "name": "js_locations",
+  "version": "1.0.0",
+  "description": "Location fetching",
+  "main": "index.js",
+  "config": {
+    "port": "3000"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "SET PORT=3000 && nodemon api_promise.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "got": "^9.6.0",
+    "koa": "^2.7.0",
+    "koa-router": "^7.4.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
