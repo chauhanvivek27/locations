@@ -10,7 +10,7 @@ module.exports.getGeoLocation = (async (location) => {
   const url =  `${GEO_CODE_URL}${location}&json=1&auth=${GEO_CODE_AUTH_KEY}`  
   const result = await _got(url,option = {json : true}).on('error', function(error,body,response){
       console.log(error);
-  })
+  });
   return result.body;
 });
 
@@ -18,7 +18,7 @@ module.exports.getNearCities = (async(latt, longt)=>{
     const url =  `${CITIES_API_URL}${latt},${longt}`  
     const result = await _got(url,option = {json : true}).on('error', function(error,body,response){
         console.log(error);
-    })
+    });
     return result.body;
 });
 
