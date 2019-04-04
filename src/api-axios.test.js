@@ -1,29 +1,32 @@
-const {
-  getGeoLocation
-
-} = require('./api-axios');
-
 
 const mockLocation = require('../mock/location');
-let getMock = () => new Promise((resolve,reject)=> {
-     console.log('calling mock');
-     const response = {
-      body: JSON.stringify(mockLocation)
-    }
-    resolve(response)
+
+function getMock(url, opts) {
+  return new Promise((resolve, reject)=> {
+    console.log('calling mock');
+    const response = {
+     body: mockLocation
+   }
+   resolve(response)
 });
+}
 
 describe('Location test case',()=>{
+  beforeEach(() => {
+    jest.resetModules()
+  })
+
   test('Geo coordinate for london location should be',async ()=>{
-    jest.setMock('got',getMock);
-    const coordinate = await getGeoLocation('london');
-    console.log('coordinate' + coordinate);
-    expect(coordinate.latt).toBe('51.51770')
+    jest.setMock('got', getMock);
+    const { getGeoLocation } = require('./api-axios');
+    const coordinate = await getGeoLocation('london');    
+    expect(coordinate.latt).toBe('52')
     expect(coordinate.longt).toBe('-0.11352')
    
 });
-
+  
 test('Geo response form service on location', async()=>{
+      const { getGeoLocation } = require('./api-axios');
        const resposne = await getGeoLocation('london');
        expect(resposne).toBeDefined();
     });
